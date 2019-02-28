@@ -11,19 +11,21 @@ public class Main {
         ArrayList<Photo> photosCollection = fileParser.parseFile();
     }
 
-    public static int getInterestingScore(ArrayList<String> firstPhotoTags, ArrayList<String> secondPhotoTags) {
+    public static int getInterestingScore(ArrayList<String> p1tags, ArrayList<String> p2tags) {
+
+        ArrayList<String> firstPhotoTags = new ArrayList<>(p1tags);
+        ArrayList<String> secondPhotoTags = new ArrayList<>(p2tags);
+
         int same = 0;
-        int notSame = 0;
 
         for(String tag: firstPhotoTags) {
             if(secondPhotoTags.contains(tag)){
                 same++;
-            } else {
-                notSame++;
+                firstPhotoTags.remove(tag);
+                secondPhotoTags.remove(tag);
             }
-            secondPhotoTags.remove(tag);
         }
 
-        return Math.min(same, notSame);
+        return Math.min(Math.min(same, secondPhotoTags.size()), firstPhotoTags.size());
     }
 }
