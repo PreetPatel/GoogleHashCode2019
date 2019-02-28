@@ -2,13 +2,13 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class FileParser {
-    private File _file;
+    private static File _file;
 
     public FileParser(File file) {
         _file = file;
     }
 
-    public ArrayList<Photo> parseFile() {
+    public static ArrayList<Photo> parseFile() {
         try {
             BufferedReader br = new BufferedReader(new FileReader(_file));
 
@@ -39,6 +39,11 @@ public class FileParser {
 
                 // Increment ID
                 id++;
+                if (photo.isHorizontal()) {
+                    Main.HorizontalPhotos.add(photo);
+                } else {
+                    Main.VerticalPhotos.add(photo);
+                }
                 photos.add(photo);
             }
             return photos;
