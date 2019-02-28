@@ -14,6 +14,14 @@ public class VTwo {
         }
     }
 
+    public void removeAllWithTag(int tag){
+        for (JoinedVerticalPhotos j : squaredVertArray){
+            if ((j.getIds()[0] == tag )||(j.getIds()[1] == tag)){
+                squaredVertArray.remove(j);
+            }
+        }
+    }
+
     public void merge(Photo i,Photo j){
         ArrayList<String> mergedTags = new ArrayList<>();
 
