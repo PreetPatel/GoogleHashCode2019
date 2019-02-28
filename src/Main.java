@@ -10,4 +10,20 @@ public class Main {
         FileParser fileParser = new FileParser(new File("src/Inputs/b_lovely_landscapes.txt"));
         ArrayList<Photo> photosCollection = fileParser.parseFile();
     }
+
+    public static int getInterestingScore(ArrayList<String> firstPhotoTags, ArrayList<String> secondPhotoTags) {
+        int same = 0;
+        int notSame = 0;
+
+        for(String tag: firstPhotoTags) {
+            if(secondPhotoTags.contains(tag)){
+                same++;
+            } else {
+                notSame++;
+            }
+            secondPhotoTags.remove(tag);
+        }
+
+        return Math.min(same, notSame);
+    }
 }
