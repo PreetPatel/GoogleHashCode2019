@@ -10,6 +10,7 @@ public class VTwo {
                     merge(i,j);
                 }
             }
+            V.remove(i);
         }
     }
 
