@@ -14,9 +14,9 @@ public class VTwo {
         }
     }
 
-    public void removeAllWithTag(int tag){
+    public void removeAllWithID(int id){
         for (JoinedVerticalPhotos j : squaredVertArray){
-            if ((j.getIds()[0] == tag )||(j.getIds()[1] == tag)){
+            if ((j.getIds()[0] == id )||(j.getIds()[1] == id)){
                 squaredVertArray.remove(j);
             }
         }
