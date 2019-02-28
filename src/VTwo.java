@@ -1,16 +1,25 @@
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+
 public class VTwo {
 
     public ArrayList<JoinedVerticalPhotos> squaredVertArray = new ArrayList<JoinedVerticalPhotos>();
 
     public VTwo (ArrayList<Photo> V){
-        for (Photo i:V){
-            for (Photo j:V){
-                if (i!=j){
-                    merge(i,j);
-                }
-            }
-            V.remove(i);
+//        for (Photo i:V){
+//            for (Photo j:V){
+//                if (i!=j){
+//                    merge(i,j);
+//                }
+//            }
+//            V.remove(i);
+//        }
+
+        sort(V);
+
+        for (int i = 0; i<V.size()-2;i=i+2){
+            merge(V.get(i),V.get(i+1));
         }
     }
 
@@ -20,6 +29,20 @@ public class VTwo {
                 squaredVertArray.remove(j);
             }
         }
+    }
+
+    public void sort(ArrayList<Photo> V){
+        Collections.sort(V, new Comparator<Photo>() {
+            public int compare(Photo a, Photo b) {
+                if(a.getTagCount() > b.getTagCount()) {
+                    return 1;
+                } else if(a.getTagCount() == b.getTagCount()) {
+                    return 0;
+                } else {
+                    return -1;
+                }
+            }
+        });
     }
 
     public void merge(Photo i,Photo j){

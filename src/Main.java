@@ -38,6 +38,7 @@ public class Main {
         Slide toAdd = new Slide(bestPhoto);
         Slideshow.add(toAdd);
         HorizontalPhotos.remove(bestPhoto);
+        System.out.println(toAdd.getPrintout());
     }
 
     public static int getInterestingScore(ArrayList<String> p1tags, ArrayList<String> p2tags) {
